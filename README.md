@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a clone of [https://github.com/zahidkhawaja/langchain-chat-nextjs](https://github.com/zahidkhawaja/langchain-chat-nextjs) and added with the backend data and querying based on Saas B2B pricing and packaging.
 
 ## Getting Started
 
@@ -18,6 +18,7 @@ Next, we'll need to load our data source.
 
 ### Data Ingestion
 
+You can ignore this if you only want to use the existing embedded vector store of pricing podcast transscripts. They came from another repo. TODO: add it in as a file here.
 Data ingestion happens in two steps.
 
 First, you should run
