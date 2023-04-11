@@ -27,15 +27,15 @@ export default async function handler(
   };
 
   sendData(JSON.stringify({ data: "" }));
-  const chain = makeChain(vectorstore, (token: string) => {
-    sendData(JSON.stringify({ data: token }));
-  });
+  const chain = makeChain(vectorstore);
 
   try {
-    await chain.call({
+    const response = await chain.call({
       question: body.question,
       chat_history: body.history,
     });
+    console.log("chat response", response);
+    sendData(JSON.stringify({ data: response.text }));
   } catch (err) {
     console.error(err);
     // Ignore error
