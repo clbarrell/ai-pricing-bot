@@ -64,7 +64,7 @@
   resize: none;
   font-size: 1.1rem;
   padding: 1rem 2rem 1rem 2rem;
-  width: 75vw;
+  width: 70vw;
   border-radius: 0.5rem;
   border: 1px solid #30373d;
   background: #070809;
@@ -120,6 +120,22 @@
   height: 100%;
   overflow-y: scroll;
   border-radius: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: white black;
+}
+
+.messagelist::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+.messagelist::-webkit-scrollbar-track {
+  background: hsl(210, 13%, 33%);        /* color of the tracking area */
+}
+
+.messagelist::-webkit-scrollbar-thumb {
+  background-color: hsl(210, 23%, 63%);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid hsl(210, 13%, 33%);  /* creates padding around scroll thumb */
 }
 
 .messagelistloading {
@@ -214,7 +230,7 @@
 }
 
 .cloud {
-  width: 75vw;
+  width: 70vw;
   height: 65vh;
   background: #070809;
   border-radius: 0.5rem;
@@ -222,6 +238,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  scrollbar-width: thin;
+  scrollbar-color: white black;
 }
 
 .pointsnormal {
@@ -241,7 +259,7 @@
   margin: 1.5rem;
 }
 
-.footer a {
+.footer a, .footer .bold {
   font-weight: 500;
   color: #7a7d81;
 }
@@ -271,18 +289,28 @@
     padding: 0.85rem 0.75rem 0.85rem 0.75rem;
   }
 
-.navlogo {
-  font-size: 1.25rem;
-  width: 20rem;
+  .navlogo {
+    font-size: 1.25rem;
+    width: 20rem;
+  }
+
+  .markdownanswer code {
+    white-space : pre-wrap !important;
+  }
+
+  .footer {
+    font-size: 0.7rem;
+    width: 100%;
+    text-align: center;
+  }
 }
 
-.markdownanswer code {
-  white-space : pre-wrap !important;
+.bold {
+  font-weight: bold;
 }
-
-.footer {
-  font-size: 0.7rem;
-  width: 100%;
+.robotIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 1em;
   text-align: center;
-}
 }

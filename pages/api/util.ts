@@ -12,9 +12,9 @@ Follow Up Input: {question}
 Standalone question:`);
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
-  `You are an AI expert in B2B Saas pricing and packaging approaches. The following podcast transcripts are all from Lenny's Podcast, a product management and SaaS podcast about growth, product and business.
-You are given the following extracted parts of podcasts transcripts and a question. Provide a conversational answer with a hyperlink to the relevant podcast, including a timestamp where possible.
-You should only use hyperlinks that are explicitly listed as a source in the context. Do NOT make up a hyperlink that is not listed.
+  `You are an AI expert in B2B Saas pricing and packaging approaches.
+You are given the following extracted parts of podcasts transcripts with pricing and packaging experts and a question. Provide a conversational answer. Show the context metadata when possible.
+Do NOT make up a hyperlink that is not listed.
 If you don't know the answer, just say "Hmm, I'm not sure." Don't try to make up an answer.
 If the question is not about B2B Saas pricing and packaging, politely inform them that you are tuned to only answer questions about pricing and packaging.
 Question: {question}

@@ -6,6 +6,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import CircularProgress from "@mui/material/CircularProgress";
 import { fetchEventSource } from "@microsoft/fetch-event-source";
+import PodcastData from "data/data_metadata.json";
 
 type Message = {
   type: "apiMessage" | "userMessage";
@@ -23,7 +24,8 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: "Hi there! How can I help?",
+        message:
+          "👋 Hi there! Chris set me up with some best practices for pricing and packaging for B2B Saas. Ask me a pricing and packaging question and I'll try to answer with some useful references.",
         type: "apiMessage",
       },
     ],
@@ -132,25 +134,18 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>LangChain Chat</title>
-        <meta name="description" content="LangChain documentation chatbot" />
+        <title>SaaS Pricing and packaging chatbot</title>
+        <meta name="description" content="SaaS Pricing and packaging chatbot" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.topnav}>
         <div className={styles.navlogo}>
-          <Link href="/">LangChain</Link>
+          <Link href="/">SaaS Pricing and packaging chatbot</Link>
         </div>
         <div className={styles.navlinks}>
           <a
-            href="https://langchain.readthedocs.io/en/latest/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Docs
-          </a>
-          <a
-            href="https://github.com/zahidkhawaja/langchain-chat-nextjs"
+            href="https://github.com/clbarrell/ai-pricing-bot"
             target="_blank"
             rel="noreferrer"
           >
@@ -166,28 +161,10 @@ export default function Home() {
               let className;
 
               if (message.type === "apiMessage") {
-                icon = (
-                  <Image
-                    src="/parroticon.png"
-                    alt="AI"
-                    width="30"
-                    height="30"
-                    className={styles.boticon}
-                    priority
-                  />
-                );
+                icon = <div className={styles.robotIcon}>🤖</div>;
                 className = styles.apimessage;
               } else {
-                icon = (
-                  <Image
-                    src="/usericon.png"
-                    alt="Me"
-                    width="30"
-                    height="30"
-                    className={styles.usericon}
-                    priority
-                  />
-                );
+                icon = <div className={styles.robotIcon}>😄</div>;
 
                 // The latest message sent by the user will be animated while waiting for a response
                 className =
@@ -251,32 +228,30 @@ export default function Home() {
           </div>
           <div className={styles.footer}>
             <p>
-              Powered by{" "}
+              Setup by <span className={styles.bold}>Chris Barrell</span>, view
+              the{" "}
               <a
-                href="https://github.com/hwchase17/langchain"
+                href="https://github.com/clbarrell/ai-pricing-bot.git"
                 target="_blank"
                 rel="noreferrer"
               >
-                LangChain
-              </a>
-              . Built by{" "}
-              <a
-                href="https://twitter.com/chillzaza_"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Zahid
-              </a>{" "}
-              and{" "}
-              <a
-                href="https://twitter.com/_seanyneutron"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Sean
+                code for more
               </a>
               .
             </p>
+            <div>
+              <p style={{ marginTop: "1em", marginBottom: "0.5em" }}>
+                Podcasts
+              </p>
+              <ul>
+                {Object.values(PodcastData).map((p) => (
+                  <li key={p.title}>
+                    <a href={p.url}>{p.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p></p>
           </div>
         </div>
       </main>

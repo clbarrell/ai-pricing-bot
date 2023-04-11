@@ -34,7 +34,7 @@ export default async function handler(
       question: body.question,
       chat_history: body.history,
     });
-    console.log("chat response", response);
+    // console.log("chat response", response);
     sendData(JSON.stringify({ data: response.text }));
   } catch (err) {
     console.error(err);
