@@ -35,7 +35,9 @@ export default async function handler(
       chat_history: body.history,
     });
     // console.log("chat response", response);
-    sendData(JSON.stringify({ data: response.text }));
+    sendData(
+      JSON.stringify({ data: response.text, sources: response.sourceDocuments })
+    );
   } catch (err) {
     console.error(err);
     // Ignore error

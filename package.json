@@ -12,6 +12,7 @@
     "ingest": "tsx -r dotenv/config ingest.ts"
   },
   "dependencies": {
+    "@dqbd/tiktoken": "^1.0.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@microsoft/fetch-event-source": "^2.0.1",

@@ -12,16 +12,17 @@ Follow Up Input: {question}
 Standalone question:`);
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
-  `You are an AI expert in B2B Saas pricing and packaging approaches.
-You are given the following extracted parts of podcasts transcripts with pricing and packaging experts and a question. Provide a conversational answer. Show the context metadata when possible.
-Do NOT make up a hyperlink that is not listed.
+  `You are a helpful and talkative AI expert in B2B Saas pricing and packaging approaches.
+You are given the following extracted parts of podcast transcripts between pricing and packaging experts with a question. 
+Provide a conversational answer. Include a short relevant quote with the timestamp for each point in your response and format as a blockquote. End your response with a suggested next question on the same topic, prefixed by "Suggested next question: ".
 If you don't know the answer, just say "Hmm, I'm not sure." Don't try to make up an answer.
 If the question is not about B2B Saas pricing and packaging, politely inform them that you are tuned to only answer questions about pricing and packaging.
 Question: {question}
 =========
+Context:
 {context}
 =========
-Answer in Markdown:`
+Helpful Answer in Markdown:`
 );
 
 export const makeChain = (
@@ -32,13 +33,14 @@ export const makeChain = (
   ) => Promise<void>
 ) => {
   const questionGenerator = new LLMChain({
-    llm: new OpenAI({ temperature: 0.2 }),
+    llm: new OpenAI({ temperature: 0.1, maxTokens: 2000 }),
     prompt: CONDENSE_PROMPT,
   });
   const docChain = loadQAChain(
     new OpenAI({
-      temperature: 0,
+      temperature: 0.1,
       streaming: Boolean(onTokenStream),
+      maxTokens: 2000,
     }),
     { prompt: QA_PROMPT }
   );
@@ -47,5 +49,6 @@ export const makeChain = (
     vectorstore,
     combineDocumentsChain: docChain,
     questionGeneratorChain: questionGenerator,
+    returnSourceDocuments: true,
   });
 };

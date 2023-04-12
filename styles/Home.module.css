@@ -219,6 +219,16 @@
   font-size: inherit;
 }
 
+.markdownanswer p {
+  margin-bottom: .75em;
+}
+
+.markdownanswer blockquote {
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 3px #7a7d81 solid;
+}
+
 
 .center {
   display: flex;
@@ -238,8 +248,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  scrollbar-width: thin;
-  scrollbar-color: white black;
 }
 
 .pointsnormal {
